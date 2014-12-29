@@ -33,3 +33,8 @@ $ vagrant ssh $HOSTNAME
 
 - You can use the IPs inside of the inventory to talk with one VM to another
 - The shared directory is for transfering files to the VMs (Nothing inside will be committed)
+
+
+## Look into later
+
+https://github.com/mitchellh/vagrant/issues/1784

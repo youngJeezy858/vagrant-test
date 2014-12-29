@@ -1,0 +1,10 @@
+[jenkins:children]
+jenkins_master
+jenkins_slaves
+
+[jenkins_master]
+jenkins00.env.fac ansible_ssh_host=192.168.111.222 ansible_ssh_port=2222
+
+[jenkins_slaves]
+slave00.env.fac ansible_ssh_host=192.168.111.223 ansible_ssh_port=2221
+slave01.env.fac ansible_ssh_host=192.168.111.224 ansible_ssh_port=2220

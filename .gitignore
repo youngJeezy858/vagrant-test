@@ -1,4 +1,6 @@
 /.vagrant/machines/*
 /inventory/*
 !/inventory/hosts-vagrant
+/shared/*
+!/shared/README.md
 /Vagrantfile

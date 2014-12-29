@@ -6,6 +6,15 @@
   vars_files:
     - "/etc/ansible/playbooks/vars/{{ansible_os_family}}.yml"
     - "/etc/ansible/playbooks/vars/facilities/{{inventory_hostname.split('.')[-1]}}.yml"
+
+  pre_tasks:
+    - name: Install standard packages
+      yum: name={{ item }} state=latest
+      with_items:
+      - telnet
+      - vim
+      when: ansible_os_family == "RedHat"
+
   roles:
     # - zebra
     # - devops 
@@ -33,3 +42,16 @@
     # - sendmail
     # - fstab 
     # - nagios
+
+  post_tasks:
+    - name: Get list of repo files
+      shell: ls -1 /etc/yum.repos.d
+      register: repos
+      when: ansible_os_family == "RedHat"
+      tags: yum
+
+    - name: Remove unecessary repos
+      file: name=/etc/yum.repos.d/{{ item }} state=absent
+      with_items: repos.stdout_lines
+      when: ansible_os_family == "RedHat" and item != "intermedix.repo"
+      tags: yum

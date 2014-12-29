@@ -1,7 +1,7 @@
 
 ```
 $ cp templates/Vagrantfile Vagrantfile
-$ cp templates/hosts-vagrant inventory
+$ cp templates/hosts-vagrant inventory/
 ```
 
 - Make changes to hostnames in those files 

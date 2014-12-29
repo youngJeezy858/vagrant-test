@@ -1,0 +1,35 @@
+---
+#File playbooks/default.yml
+
+- hosts: all
+  sudo: yes
+  vars_files:
+    - "vars/{{ansible_os_family}}.yml"
+    # - "vars/facilities/{{inventory_hostname.split('.')[-1]}}.yml"
+  roles:
+    # - zebra
+    # - devops 
+    - usrimx
+    - { role: yum, when: "ansible_os_family == 'RedHat'" }
+    - aliases
+    - hostname
+    - { role: logrotate, when: "ansible_os_family == 'RedHat'" }
+    - make
+    - motd
+    - { role: newsyslog, when: "ansible_os_family == 'FreeBSD'" }
+    - openntpd
+    - profile
+    # - resolv
+    # - snmpd
+    # - sshd
+    # - sudoers
+    # - sysctl
+    # - syslog-ng
+    - { role: iptables, when: "ansible_os_family == 'RedHat'" }
+    - { role: loader, when: "ansible_os_family == 'FreeBSD'" }
+    - { role: limits.d, when: "ansible_os_family == 'RedHat'" }
+    - { role: pf, when: "ansible_os_family == 'FreeBSD'" }
+    - { role: selinux, when: "ansible_os_family == 'RedHat'" }
+    # - sendmail
+    # - fstab 
+    # - nagios

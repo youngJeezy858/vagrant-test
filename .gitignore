@@ -1,3 +1,4 @@
 /.vagrant/machines/*
 /inventory/*
+!/inventory/hosts-vagrant
 /Vagrantfile

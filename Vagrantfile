@@ -39,7 +39,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       ansible.sudo = true
       ansible.inventory_path = "provisioning/hosts-vagrant"
       ansible.limit = "all"
-      ansible.playbook = "/provisioning/playbooks/default-vagrant.yml"
+      ansible.playbook = "provisioning/playbooks/default-vagrant.yml"
       ansible.host_key_checking = false
       # ansible.verbose = 'vvvv'
     end

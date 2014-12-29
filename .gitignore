@@ -1,1 +1,3 @@
-.vagrant/machines/*
+/.vagrant/machines/*
+/inventory/*
+/Vagrantfile
